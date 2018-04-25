@@ -40,6 +40,10 @@ public class BuscarFilialServlet extends HttpServlet {
         
         
         String idfilial = request.getParameter("idfilial");
+        
+        int id = Integer.parseInt(idfilial.substring(1,2));
+        
+        System.out.println(id);
 
         ControllerFilial con = new ControllerFilial();
 
@@ -47,7 +51,7 @@ public class BuscarFilialServlet extends HttpServlet {
 
         try {
 
-            filial = con.select(Integer.parseInt(idfilial));
+            filial = con.select(id);
             
              System.out.println("Chegou aqui");
             
