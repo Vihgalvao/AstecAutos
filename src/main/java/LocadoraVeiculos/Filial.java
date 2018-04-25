@@ -14,11 +14,11 @@ import java.text.SimpleDateFormat;
  */
 public class Filial {
     
-    private long id;
+    private int id;
     
     private String nomeUnidade;
     
-    private String Rua;
+    private String rua;
     
     private int numero;
     
@@ -35,7 +35,7 @@ public class Filial {
     public Filial(String nomeUnidade, String Rua, int numero, int cep, int telefone, String gerente) {
       DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
       this.nomeUnidade = nomeUnidade;
-      this.Rua = Rua;
+      this.rua = Rua;
       this.numero = numero;
       this.cep = cep;
       this.telefone = telefone;
@@ -46,14 +46,14 @@ public class Filial {
     /**
      * @return the id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -72,17 +72,17 @@ public class Filial {
     }
 
     /**
-     * @return the Rua
+     * @return the rua
      */
     public String getRua() {
-        return Rua;
+        return this.rua;
     }
 
     /**
-     * @param Rua the Rua to set
+     * @param Rua the rua to set
      */
-    public void setRua(String Rua) {
-        this.Rua = Rua;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     /**

@@ -48,7 +48,7 @@ public class ControllerFilial {
                 ResultSet resultados = stmt.executeQuery()) {
 
             while (resultados.next()) {
-                long id = resultados.getLong("id");
+                int id = resultados.getInt("id");
                 String nome = resultados.getString("NomeUnidade");
                 String rua = resultados.getString("Rua");
                 int numero = resultados.getInt("Numero");
@@ -103,18 +103,22 @@ public class ControllerFilial {
 
     public void atualizar(Filial P) throws ClassNotFoundException, SQLException {
         try {
+            System.out.println("Entrou no fim da atz!!");
             Connection conn = obterConexao();
-            PreparedStatement stmt = conn.prepareStatement("UPDATE Filial SET "
-                    + "nomeUnidade = ?, Rua =?, Numero=?, Cep=?, Telefone=?, Gerente=?"
-                    + "FROM Filial WHERE ID = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE filial SET "
+                    + "NomeUnidade = ?, Rua =?, Numero=?, Cep=?, Telefone=?, Gerente=?"
+                    + "WHERE id = ?");
             stmt.setString(1, P.getNomeUnidade());
             stmt.setString(2, P.getRua());
             stmt.setInt(3, P.getNumero());
             stmt.setInt(4, P.getCep());
             stmt.setInt(5, P.getTelefone());
             stmt.setString(6, P.getGerente());
+            stmt.setInt(7, P.getId());
             stmt.executeUpdate();
             conn.close();
+            
+            System.out.println("Entrou no fim da atz!!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
@@ -142,6 +146,8 @@ public class ControllerFilial {
     }
 
     public Filial select(int id) throws ClassNotFoundException, SQLException {
+        
+       
 
         Filial filial = new Filial();
 
@@ -149,6 +155,7 @@ public class ControllerFilial {
                 PreparedStatement stmt = conn.prepareStatement(
                         "select * FROM test.Filial WHERE id = " + id);
                 ResultSet resultados = stmt.executeQuery()) {
+            System.out.println("Chegou Aqui");
 
             while (resultados.next()) {
 
@@ -166,6 +173,8 @@ public class ControllerFilial {
                 filial.setCep(cep);
                 filial.setTelefone(telefone);
                 filial.setGerente(gerente);
+                
+                System.out.println("O aluno é:" + filial.getGerente());
             }
             conn.close();
 

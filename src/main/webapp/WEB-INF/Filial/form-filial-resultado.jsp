@@ -12,6 +12,10 @@
         <div>
             <form action="${pageContext.request.contextPath}/AtualizarFilial"
                   method="post">
+                
+                 <div>
+                    Id Filial: <input type="text" name="id" value= "${pessoaAtualizada.id}"/>
+                </div>
 
                 <div>
                     Nome Filial: <input type="text" name="nome" value= "${pessoaAtualizada.nomeUnidade}" />

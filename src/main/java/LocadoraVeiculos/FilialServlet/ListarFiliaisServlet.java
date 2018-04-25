@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LocadoraVeiculos;
+package LocadoraVeiculos.FilialServlet;
 
+import LocadoraVeiculos.ControllerFilial;
+import LocadoraVeiculos.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author victor.gsgalvao
  */
-@WebServlet(name = "BuscarFilialServlet", urlPatterns = {"/buscar-filial"})
-public class BuscarFilialServlet extends HttpServlet {
+@WebServlet(name = "ListarFiliaisServlet", urlPatterns = {"/ListarFiliaisServlet"})
+public class ListarFiliaisServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +44,10 @@ public class BuscarFilialServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AtualizarFilialServlet</title>");
+            out.println("<title>Servlet ListarFiliaisServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AtualizarFilialServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListarFiliaisServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +65,27 @@ public class BuscarFilialServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+        ControllerFilial con = new ControllerFilial();
+        
+        List<Filial> lista = new ArrayList<Filial>();
+        
+        try {
+            lista = con.listar();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        request.setAttribute("lista", lista);
+        
+        
+
+        request.getRequestDispatcher("ListarFilial.jsp").forward(request, response);
+        
+  
     }
 
     /**
@@ -73,24 +99,7 @@ public class BuscarFilialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String idfilial = request.getParameter("idfilial");
-
-        ControllerFilial con = new ControllerFilial();
-
-        Filial filial = new Filial();
-
-        try {
-
-            filial = con.select(Integer.parseInt(idfilial));
-
-        } catch (Exception e) {
-        }
-
-        request.setAttribute("pessoaAtualizada", filial);
-
-        request.getRequestDispatcher("form-filial-resultado.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**

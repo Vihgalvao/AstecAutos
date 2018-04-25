@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LocadoraVeiculos;
+package LocadoraVeiculos.FilialServlet;
 
+import LocadoraVeiculos.ControllerFilial;
+import LocadoraVeiculos.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author victor.gsgalvao
  */
 @WebServlet(name = "AtualizarFilial", urlPatterns = {"/AtualizarFilial"})
-public class AtualizarFilial extends HttpServlet {
+public class AtualizarFilialServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,25 +77,27 @@ public class AtualizarFilial extends HttpServlet {
             throws ServletException, IOException {
         
         String id = request.getParameter("id");
-        String nome = request.getParameter("nomeUnidade");
+        String nome = request.getParameter("nome");
         String rua = "testee";
         String numero = request.getParameter("numero");
         String cep = request.getParameter("cep");
         String telefone = request.getParameter("telefone");
         String gerente = request.getParameter("gerente");
 
-        Filial p1 = new Filial(nome, rua, Integer.parseInt(numero), Integer.parseInt(cep), Integer.parseInt(telefone), gerente);
+        Filial p1 = new Filial( nome, rua, Integer.parseInt(numero), Integer.parseInt(cep), Integer.parseInt(telefone), gerente);
         ControllerFilial con = new ControllerFilial();
+        
+        p1.setId(Integer.parseInt(id));
 
         try {
             con.atualizar(p1);
-            System.out.println("Passou aqui");
+            System.out.println(p1.getNomeUnidade());
         } catch (Exception e) {
             System.out.println("Vefique o objeto");
         }
 
         request.setAttribute("pessoaUpdate", p1);
-        System.out.println("Atualizou!!");
+    
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("resultadoAtualizar.jsp");

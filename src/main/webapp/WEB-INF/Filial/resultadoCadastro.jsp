@@ -7,6 +7,6 @@
     <title>JSP Page</title>
   </head>
   <body>
-    <h1>Pessoa <c:out value="${pessoaCadastrada.nome}" /> cadastrado com sucesso</h1>
+    <h1>Pessoa <c:out value="${pessoaCadastrada.nomeUnidade}" /> cadastrado com sucesso</h1>
   </body>
 </html>

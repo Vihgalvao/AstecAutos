@@ -13,6 +13,9 @@
             <form action="${pageContext.request.contextPath}/buscar-filial"
                   method="post">
                 <div>
+                    Id Filial: <input type="text" name="id" />
+                </div>
+                <div>
                     Nome Filial: <input type="text" name="NomeUnidade" />
                 </div>
                 <div>
