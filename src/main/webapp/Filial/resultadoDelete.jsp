@@ -7,8 +7,8 @@
     <title>JSP Page</title>
   </head>
   <body>
-    <h1>Pessoa <c:out value="${nome}" /> atualizada com sucesso</h1>
+    <h1>Id filia: <c:out value="${nome}" /> deletado com sucesso</h1>
     <p>
-        <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial.jsp" > Voltar </a>    
+    <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/FilialInicio.jsp" > Voltar </a> 
   </body>
 </html>

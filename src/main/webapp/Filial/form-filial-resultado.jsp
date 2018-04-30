@@ -20,6 +20,9 @@
                 <div>
                     Nome Filial: <input type="text" name="nome" value= "${pessoaAtualizada.nomeUnidade}" />
                 </div>
+                <div>
+                    Rua <input type="text" name="rua" value= "${pessoaAtualizada.rua}"/>
+                </div> 
 
                 <div>
                     Numero: <input type="text" name="numero" value= "${pessoaAtualizada.numero}"/>
@@ -33,10 +36,14 @@
                 <div>
                     Gerente: <input type="text" name="gerente" value= "${pessoaAtualizada.gerente}"/>
                 </div> 
-                <button type="submit">Enviar</button>
+                <div>
+                  <input type="radio" name="metodo" value="atualizar"> Atualizar <br>
+                  <input type="radio" name="metodo" value="deletar" checked> Deletar <br>
+                </div> 
+                <button type="submit">Salvar</button>
             </form>
             <p> 
-                <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial.jsp" > Voltar </a> 
+                <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/FilialInicio.jsp" > Voltar </a> 
         </div>
     </body>
 </html>

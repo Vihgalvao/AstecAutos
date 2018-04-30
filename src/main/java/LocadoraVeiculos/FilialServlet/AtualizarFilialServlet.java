@@ -63,6 +63,14 @@ public class AtualizarFilialServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+    
+    
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
+        
+        
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -78,11 +86,14 @@ public class AtualizarFilialServlet extends HttpServlet {
         
         String id = request.getParameter("id");
         String nome = request.getParameter("nome");
-        String rua = "testee";
+        String rua = request.getParameter("rua");
         String numero = request.getParameter("numero");
         String cep = request.getParameter("cep");
         String telefone = request.getParameter("telefone");
         String gerente = request.getParameter("gerente");
+        String metodo = request.getParameter("metodo");
+        
+        System.out.println(metodo + " esse é o valor");
 
         Filial p1 = new Filial( nome, rua, Integer.parseInt(numero), Integer.parseInt(cep), Integer.parseInt(telefone), gerente);
         ControllerFilial con = new ControllerFilial();
@@ -90,18 +101,28 @@ public class AtualizarFilialServlet extends HttpServlet {
         p1.setId(Integer.parseInt(id));
 
         try {
-            con.atualizar(p1);
-            System.out.println(p1.getNomeUnidade());
+            if(metodo.equals("atualizar")) {
+                con.atualizar(p1);  
+              
+                request.setAttribute("pessoaUpdate", p1);
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("Filial/resultadoAtualizar.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("ENTROU NO ATUALIZAR");
+            } else if (metodo.equals("deletar")) {
+              con.excluir(p1.getId());
+              
+               request.setAttribute("pessoaUpdate", p1);
+               RequestDispatcher dispatcher = request.getRequestDispatcher("Filial/resultadoDelete.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("ENTROU NO DELETAr");
+            }
+
         } catch (Exception e) {
             System.out.println("Vefique o objeto");
         }
 
-        request.setAttribute("pessoaUpdate", p1);
-    
 
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("resultadoAtualizar.jsp");
-        dispatcher.forward(request, response);
        
     }
 

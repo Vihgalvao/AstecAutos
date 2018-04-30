@@ -61,7 +61,7 @@ public class BuscarFilialServlet extends HttpServlet {
 
         request.setAttribute("pessoaAtualizada", filial);
 
-        request.getRequestDispatcher("WEB-INF/Filial/form-filial-resultado.jsp").forward(request, response);
+        request.getRequestDispatcher("Filial/form-filial-resultado.jsp").forward(request, response);
 
     
     

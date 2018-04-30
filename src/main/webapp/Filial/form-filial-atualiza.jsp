@@ -33,7 +33,11 @@
                 <div>
                     Gerente: <input type="text" name="Gerente"/>
                 </div>
-                <button type="submit">Enviar</button>
+                <div>
+                  <input type="radio" name="gender" value="atualizar" checked> Apagar<br>
+                  <input type="radio" name="gender" value="deletar"> Atualizar <br>
+                </div>    
+                <button type="submit">Salvar</button>
             </form>
             <p>
                 <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial.jsp" > Voltar </a> 

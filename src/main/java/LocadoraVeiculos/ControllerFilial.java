@@ -34,7 +34,7 @@ public class ControllerFilial {
         Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/test", "root", "");
+                "jdbc:mysql://172.20.0.81:3306/test", "planejamento", "ccash01");
         return conn;
     }
 
@@ -105,7 +105,7 @@ public class ControllerFilial {
         try {
             System.out.println("Entrou no fim da atz!!");
             Connection conn = obterConexao();
-            PreparedStatement stmt = conn.prepareStatement("UPDATE filial SET "
+            PreparedStatement stmt = conn.prepareStatement("UPDATE Filial SET "
                     + "NomeUnidade = ?, Rua =?, Numero=?, Cep=?, Telefone=?, Gerente=?"
                     + "WHERE id = ?");
             stmt.setString(1, P.getNomeUnidade());
@@ -118,7 +118,6 @@ public class ControllerFilial {
             stmt.executeUpdate();
             conn.close();
             
-            System.out.println("Entrou no fim da atz!!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {

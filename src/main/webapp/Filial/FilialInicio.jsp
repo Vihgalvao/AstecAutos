@@ -15,8 +15,6 @@
         <h1>Filias</h1><p>
         <ul>
             <li><h3><a href="http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial/form-filial-cadastro.jsp"> Cadastro </a></h3></li>
-            <li><h3><a href="http://localhost:8080/agendaweb-1.0-SNAPSHOT/BuscarFilial.jsp"> Atualizar </a></h3></li>
-            <li><h3><a href="http://localhost:8080/agendaweb-1.0-SNAPSHOT/BuscarFilialDelete.jsp"> Apagar </a></h3></li>
             <li><h3><a href="http://localhost:8080/agendaweb-1.0-SNAPSHOT/ListarFiliaisServlet"> Listar Todas </a></h3></li>
         </ul>  
     </body>
