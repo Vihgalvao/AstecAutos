@@ -154,7 +154,6 @@ public class ControllerFilial {
                 PreparedStatement stmt = conn.prepareStatement(
                         "select * FROM test.Filial WHERE id = " + id);
                 ResultSet resultados = stmt.executeQuery()) {
-            System.out.println("Chegou Aqui");
 
             while (resultados.next()) {
 
@@ -173,7 +172,7 @@ public class ControllerFilial {
                 filial.setTelefone(telefone);
                 filial.setGerente(gerente);
                 
-                System.out.println("O aluno é:" + filial.getGerente());
+               
             }
             conn.close();
 

@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LocadoraVeiculos.FilialServlet;
+package LocadoraVeiculos.PlanoServlet;
 
+import LocadoraVeiculos.FilialServlet.*;
 import LocadoraVeiculos.ControllerFilial;
+import LocadoraVeiculos.ControllerPlano;
 import LocadoraVeiculos.Filial;
+import LocadoraVeiculos.Plano;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -24,8 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author victor.gsgalvao
  */
-@WebServlet(name = "ListarFiliaisServlet", urlPatterns = {"/ListarFiliaisServlet"})
-public class ListarFiliaisServlet extends HttpServlet {
+@WebServlet(name = "ListarPlanosServlet", urlPatterns = {"/ListarPlanosServlet"})
+public class ListarPlanosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,20 +70,21 @@ public class ListarFiliaisServlet extends HttpServlet {
             throws ServletException, IOException {
         
         
-        ControllerFilial con = new ControllerFilial();
+        ControllerPlano con = new ControllerPlano();
         
-        List<Filial> lista = new ArrayList<Filial>();
+        List<Plano> lista = new ArrayList<Plano>();
         
         try {
             lista = con.listar();
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarPlanosServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarPlanosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Filial/ListarFilial.jsp").forward(request, response);
+         request.setAttribute("lista", lista);
+        request.getRequestDispatcher("Plano/ListarPlano.jsp").forward(request, response);
         
   
     }

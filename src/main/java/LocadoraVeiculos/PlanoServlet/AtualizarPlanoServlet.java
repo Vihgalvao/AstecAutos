@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LocadoraVeiculos.FilialServlet;
+package LocadoraVeiculos.PlanoServlet;
 
+import LocadoraVeiculos.FilialServlet.*;
 import LocadoraVeiculos.ControllerFilial;
+import LocadoraVeiculos.ControllerPlano;
 import LocadoraVeiculos.Filial;
+import LocadoraVeiculos.Plano;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author victor.gsgalvao
  */
-@WebServlet(name = "ListarFiliaisServlet", urlPatterns = {"/ListarFiliaisServlet"})
-public class ListarFiliaisServlet extends HttpServlet {
+@WebServlet(name = "AtualizarPlano", urlPatterns = {"/AtualizarPlano"})
+public class AtualizarPlanoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +43,10 @@ public class ListarFiliaisServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarFiliaisServlet</title>");            
+            out.println("<title>Servlet AtualizarFilial</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarFiliaisServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AtualizarFilial at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,24 +64,15 @@ public class ListarFiliaisServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    
+    
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
         
         
-        ControllerFilial con = new ControllerFilial();
-        
-        List<Filial> lista = new ArrayList<Filial>();
-        
-        try {
-            lista = con.listar();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Filial/ListarFilial.jsp").forward(request, response);
-        
-  
     }
 
     /**
@@ -96,7 +86,45 @@ public class ListarFiliaisServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String id_plano = request.getParameter("id_plano");
+        String ds_plano  = request.getParameter("nome");
+        String id_classificao = request.getParameter("class");
+        String valor = request.getParameter("numero");
+        String metodo = request.getParameter("metodo");
+        
+        System.out.println(id_classificao + " esse é o valor");
+
+        Plano p1 = new Plano( ds_plano, Integer.parseInt(id_classificao), Double.parseDouble(valor));
+        ControllerPlano con = new ControllerPlano();
+        
+        p1.setIdplano(Integer.parseInt(id_plano));
+
+        try {
+            if(metodo.equals("atualizar")) {
+                con.atualizar(p1);  
+              
+                request.setAttribute("planoUpdate", p1);
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("Plano/resultadoAtualizar.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("ENTROU NO ATUALIZAR");
+                
+            } else if (metodo.equals("deletar")) {
+              con.excluir(p1.getIdplano());
+              
+               request.setAttribute("planoUpdate", p1);
+               RequestDispatcher dispatcher = request.getRequestDispatcher("Plano/resultadoDelete.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("ENTROU NO DELETAr");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Vefique o objeto");
+        }
+
+
+       
     }
 
     /**

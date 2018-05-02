@@ -7,7 +7,7 @@
     </head>
     <body>
         <div> 
-            <h1>Cadastre uma Filial</h1>
+            <h1>Cadastre um Plano</h1>
         </div>
         <div>
             <form action="${pageContext.request.contextPath}/cadastro-filial"
