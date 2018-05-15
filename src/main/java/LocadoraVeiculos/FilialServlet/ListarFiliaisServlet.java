@@ -7,6 +7,7 @@ package LocadoraVeiculos.FilialServlet;
 
 import LocadoraVeiculos.ControllerFilial;
 import LocadoraVeiculos.Filial;
+import LocadoraVeiculos.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -44,7 +45,7 @@ public class ListarFiliaisServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarFiliaisServlet</title>");            
+            out.println("<title>Servlet ListarFiliaisServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarFiliaisServlet at " + request.getContextPath() + "</h1>");
@@ -65,12 +66,20 @@ public class ListarFiliaisServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
+        Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        } else {
+            if (funcionario.getIdnivel() < 2) {
+                response.sendRedirect("HomePage.jsp");
+            }
+        }
+
         ControllerFilial con = new ControllerFilial();
-        
+
         List<Filial> lista = new ArrayList<Filial>();
-        
+
         try {
             lista = con.listar();
         } catch (ClassNotFoundException ex) {
@@ -78,11 +87,10 @@ public class ListarFiliaisServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ListarFiliaisServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         request.setAttribute("lista", lista);
         request.getRequestDispatcher("Filial/ListarFilial.jsp").forward(request, response);
-        
-  
+
     }
 
     /**

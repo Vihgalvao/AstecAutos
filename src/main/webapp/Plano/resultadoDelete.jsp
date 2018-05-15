@@ -7,8 +7,8 @@
     <title>Delete</title>
   </head>
   <body>
-    <h1>Id filia: <c:out value="${planoUpdate.plano}" /> deletado com sucesso</h1>
+    <h1>Id Plano: <c:out value="${planoUpdate.plano}" /> deletado com sucesso</h1>
     <p>
-    <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Plano/PlanoInicio.jsp" > Voltar </a> 
+    <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>  
   </body>
 </html>

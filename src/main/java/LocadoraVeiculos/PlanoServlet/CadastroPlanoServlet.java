@@ -24,29 +24,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author fernando.tsuda
  */
-@WebServlet(name = "CadastroFilialServlet", urlPatterns = {"/cadastro-plano"})
+@WebServlet(name = "CadastroPlanoServlet", urlPatterns = {"/cadastro-plano"})
 public class CadastroPlanoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ControllerPlano p1 = new ControllerPlano();
-        List<Plano> resultados = new ArrayList<Plano>();
-
-        try {
-
-            resultados = p1.listar();
-
-            request.setAttribute("planos", resultados);
-            
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("ListarFilial.jsp");
-            dispatcher.forward(request, response);
-
-        } catch (Exception e) {
-            System.out.println("Verifique o objeto");
-        }
+    request.getRequestDispatcher("Plano/form-plano-cadastro.jsp").forward(request, response);  
 
     }
 

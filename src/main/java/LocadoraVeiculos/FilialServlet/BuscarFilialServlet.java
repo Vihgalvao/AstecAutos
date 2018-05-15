@@ -7,6 +7,7 @@ package LocadoraVeiculos.FilialServlet;
 
 import LocadoraVeiculos.ControllerFilial;
 import LocadoraVeiculos.Filial;
+import LocadoraVeiculos.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "BuscarFilialServlet", urlPatterns = {"/buscar-filial"})
 public class BuscarFilialServlet extends HttpServlet {
 
-
     //<editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -36,13 +36,20 @@ public class BuscarFilialServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
+
+        Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        } else {
+                if (funcionario.getIdnivel() < 2) {
+                    response.sendRedirect("HomePage.jsp");
+                }
+            }
+
         String idfilial = request.getParameter("idfilial");
-        
-        int id = Integer.parseInt(idfilial.substring(1,2));
-        
+
+        int id = Integer.parseInt(idfilial.substring(1, 2));
+
         System.out.println(id);
 
         ControllerFilial con = new ControllerFilial();
@@ -52,19 +59,15 @@ public class BuscarFilialServlet extends HttpServlet {
         try {
 
             filial = con.select(id);
-            
-             System.out.println("Chegou aqui");
-            
+
         } catch (Exception e) {
-            
+
         }
 
         request.setAttribute("pessoaAtualizada", filial);
 
         request.getRequestDispatcher("Filial/form-filial-resultado.jsp").forward(request, response);
 
-    
-    
     }
 
     /**

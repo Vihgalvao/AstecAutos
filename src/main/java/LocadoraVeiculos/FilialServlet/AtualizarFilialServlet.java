@@ -7,6 +7,7 @@ package LocadoraVeiculos.FilialServlet;
 
 import LocadoraVeiculos.ControllerFilial;
 import LocadoraVeiculos.Filial;
+import LocadoraVeiculos.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -40,7 +41,7 @@ public class AtualizarFilialServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AtualizarFilial</title>");            
+            out.println("<title>Servlet AtualizarFilial</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AtualizarFilial at " + request.getContextPath() + "</h1>");
@@ -63,13 +64,11 @@ public class AtualizarFilialServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
-    
+
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
-        
-        
+
     }
 
     /**
@@ -83,7 +82,16 @@ public class AtualizarFilialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        }else {
+                if (funcionario.getIdnivel() < 2) {
+                    response.sendRedirect("HomePage.jsp");
+                }
+            }
+
         String id = request.getParameter("id");
         String nome = request.getParameter("nome");
         String rua = request.getParameter("rua");
@@ -92,28 +100,28 @@ public class AtualizarFilialServlet extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String gerente = request.getParameter("gerente");
         String metodo = request.getParameter("metodo");
-        
+
         System.out.println(metodo + " esse é o valor");
 
-        Filial p1 = new Filial( nome, rua, Integer.parseInt(numero), Integer.parseInt(cep), Integer.parseInt(telefone), gerente);
+        Filial p1 = new Filial(nome, rua, Integer.parseInt(numero), Integer.parseInt(cep), Integer.parseInt(telefone), gerente);
         ControllerFilial con = new ControllerFilial();
-        
+
         p1.setId(Integer.parseInt(id));
 
         try {
-            if(metodo.equals("atualizar")) {
-                con.atualizar(p1);  
-              
+            if (metodo.equals("atualizar")) {
+                con.atualizar(p1);
+
                 request.setAttribute("pessoaUpdate", p1);
                 RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Filial/resultadoAtualizar.jsp");
+                        = request.getRequestDispatcher("Filial/resultadoAtualizar.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("ENTROU NO ATUALIZAR");
             } else if (metodo.equals("deletar")) {
-              con.excluir(p1.getId());
-              
-               request.setAttribute("pessoaUpdate", p1);
-               RequestDispatcher dispatcher = request.getRequestDispatcher("Filial/resultadoDelete.jsp");
+                con.excluir(p1.getId());
+
+                request.setAttribute("pessoaUpdate", p1);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Filial/resultadoDelete.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("ENTROU NO DELETAr");
             }
@@ -122,8 +130,6 @@ public class AtualizarFilialServlet extends HttpServlet {
             System.out.println("Vefique o objeto");
         }
 
-
-       
     }
 
     /**

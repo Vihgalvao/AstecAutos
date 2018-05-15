@@ -7,7 +7,7 @@
     </head>
     <body>
         <div> 
-            <h1>Cadastre um Plano</h1>
+            <h1>Cadastre uma Filial</h1>
         </div>
         <div>
             <form action="${pageContext.request.contextPath}/cadastro-filial"
@@ -35,7 +35,7 @@
                 <p>
             </form>
                   <p>
-                  <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial.jsp" > Voltar </a>     
+                  <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Filial/FilialInicio.jsp" > Voltar </a>   
                  
                   
         </div>

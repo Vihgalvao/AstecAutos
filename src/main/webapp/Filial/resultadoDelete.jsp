@@ -9,6 +9,6 @@
   <body>
     <h1>Id filia: <c:out value="${nome}" /> deletado com sucesso</h1>
     <p>
-    <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/FilialInicio.jsp" > Voltar </a> 
+    <a href= "${pageContext.request.contextPath}/HomeFilialServlet" > Voltar </a> 
   </body>
 </html>

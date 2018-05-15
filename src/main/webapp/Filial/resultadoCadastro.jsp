@@ -7,8 +7,8 @@
     <title>JSP Page</title>
   </head>
   <body>
-    <h1>Pessoa <c:out value="${pessoaCadastrada.nomeUnidade}" /> cadastrado com sucesso</h1>
+    <h1>Filial <c:out value="${pessoaCadastrada.nomeUnidade}" /> cadastrado com sucesso</h1>
     <p>
-    <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/FilialInicio.jsp" > Voltar </a>   
+    <a href= "${pageContext.request.contextPath}/HomeFilialServlet" > Voltar </a>  
   </body>
 </html>

@@ -22,7 +22,7 @@
 	  </li>
 	</c:forEach>
       </ul> <p>
-        <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/FilialInicio.jsp" > Voltar </a> 
+        <a href= "${pageContext.request.contextPath}/HomeFilialServlet" > Voltar </a> 
     </div>
   </body>
 </html>

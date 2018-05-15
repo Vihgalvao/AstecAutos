@@ -9,7 +9,7 @@
     </head>
     <body>
         <div> 
-            <h1>Atualizar uma Filial</h1>
+            <h1>Atualizar um Plano</h1>
         </div>
         <div>
             <form action="${pageContext.request.contextPath}/AtualizarPlano"
@@ -44,7 +44,7 @@
                 <button type="submit">Salvar</button>
             </form>
             <p> 
-                <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Plano/PlanoInicio.jsp" > Voltar </a> 
+                <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>  
         </div>
                 
     <script>

@@ -24,7 +24,7 @@
 	  </li>
 	</c:forEach>
       </ul> <p>
-        <a href= "http://localhost:8080/agendaweb-1.0-SNAPSHOT/Plano/PlanoInicio.jsp" > Voltar </a> 
+        <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>  
     </div>
     </body>
 </html>
