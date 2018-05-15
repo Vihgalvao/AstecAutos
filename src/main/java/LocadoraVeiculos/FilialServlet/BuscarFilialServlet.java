@@ -66,7 +66,7 @@ public class BuscarFilialServlet extends HttpServlet {
 
         request.setAttribute("pessoaAtualizada", filial);
 
-        request.getRequestDispatcher("Filial/form-filial-resultado.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Filial/form-filial-resultado.jsp").forward(request, response);
 
     }
 
@@ -97,7 +97,7 @@ public class BuscarFilialServlet extends HttpServlet {
 
         request.setAttribute("pessoaAtualizada", filial);
 
-        request.getRequestDispatcher("WEB-INF/Filial/form-filial-resultado.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/WEB-INF/Filial/form-filial-resultado.jsp").forward(request, response);
 
     }
 

@@ -122,21 +122,21 @@ public class AtualizarPessoaServlet extends HttpServlet {
 
         try {
             if (metodo.equals("atualizar")) {
-                System.out.println("ENTROU NO METODO!!");
+
                 con.atualizar(p1);
                 con.atualizarCliente(p1);
-                System.out.println("FINALIZOU METODOS!!");
+
 
                 request.setAttribute("ClienteUpdate", p1);
                 RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("Pessoa/resultadoAtualizar.jsp");
+                        = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoAtualizar.jsp");
                 dispatcher.forward(request, response);
 
             } else if (metodo.equals("deletar")) {
                 con.excluir(p1.getId());
 
                 request.setAttribute("ClienteUpdate", p1);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Pessoa/resultadoDelete.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoDelete.jsp");
                 dispatcher.forward(request, response);
 
             }

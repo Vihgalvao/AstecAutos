@@ -124,14 +124,14 @@ public class AtualizarFuncionarioServlet extends HttpServlet {
 
                 request.setAttribute("FuncionarioUpdate", p1);
                 RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("Pessoa/resultadoAtualizarFunc.jsp");
+                        = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoAtualizarFunc.jsp");
                 dispatcher.forward(request, response);
 
             } else if (metodo.equals("deletar")) {
                 con.excluir(p1.getId());
 
                 request.setAttribute("FuncionarioUpdate", p1);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Pessoa/resultadoDeleteFunc.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoDeleteFunc.jsp");
                 dispatcher.forward(request, response);
 
             }

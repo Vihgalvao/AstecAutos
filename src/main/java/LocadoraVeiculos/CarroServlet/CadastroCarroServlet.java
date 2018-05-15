@@ -33,7 +33,7 @@ public class CadastroCarroServlet extends HttpServlet {
         if (funcionario == null) {
             response.sendRedirect("index.jsp");
         }
-        request.getRequestDispatcher("/Carro/form-carro-cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Carro/form-carro-cadastro.jsp").forward(request, response);
 
     }
 
@@ -66,7 +66,7 @@ public class CadastroCarroServlet extends HttpServlet {
         request.setAttribute("carroCadastrado", p1);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Carro/resultadoCadastro.jsp");
+                = request.getRequestDispatcher("WEB-INF/Carro/resultadoCadastro.jsp");
         dispatcher.forward(request, response);
 
     }

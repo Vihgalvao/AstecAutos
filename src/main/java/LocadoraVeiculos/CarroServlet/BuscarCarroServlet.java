@@ -62,7 +62,7 @@ public class BuscarCarroServlet extends HttpServlet {
 
         request.setAttribute("carroAtualizada", carro);
 
-        request.getRequestDispatcher("Carro/form-carro-resultado.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Carro/form-carro-resultado.jsp").forward(request, response);
 
     }
 

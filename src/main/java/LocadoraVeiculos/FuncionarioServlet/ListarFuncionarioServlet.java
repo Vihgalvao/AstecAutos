@@ -85,7 +85,7 @@ public class ListarFuncionarioServlet extends HttpServlet {
         }
 
         request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Pessoa/ListarFuncionario.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/ListarFuncionario.jsp").forward(request, response);
 
     }
 

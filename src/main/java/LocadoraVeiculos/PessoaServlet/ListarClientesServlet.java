@@ -80,7 +80,7 @@ public class ListarClientesServlet extends HttpServlet {
         List<Pessoa> lista = new ArrayList<Pessoa>();
 
         try {
-            System.out.println("ENTRO, ANTES MOTODO LISTAR");
+
             lista = con.listarCliente();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ListarClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,7 +89,7 @@ public class ListarClientesServlet extends HttpServlet {
         }
 
         request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Pessoa/ListarPessoa.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/ListarPessoa.jsp").forward(request, response);
 
     }
 

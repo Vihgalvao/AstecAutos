@@ -65,7 +65,7 @@ public class HomeCarroServlet extends HttpServlet {
             response.sendRedirect("index.jsp");
         } 
         
-        request.getRequestDispatcher("Carro/CarroInicio.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Carro/CarroInicio.jsp").forward(request, response);
     }
 
     /**

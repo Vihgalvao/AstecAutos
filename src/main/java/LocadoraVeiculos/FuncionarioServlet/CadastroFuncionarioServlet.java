@@ -40,7 +40,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         if (funcionario == null) {
             response.sendRedirect("index.jsp");
         }
-        request.getRequestDispatcher("Pessoa/form-funcionario-cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/form-funcionario-cadastro.jsp").forward(request, response);
 
     }
 
@@ -113,7 +113,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         request.setAttribute("funcCadastrado", p1);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Pessoa/resultadoCadastroFunc.jsp");
+                = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoCadastroFunc.jsp");
         dispatcher.forward(request, response);
 
     }

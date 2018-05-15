@@ -88,7 +88,7 @@ public class ListarCarrosServlet extends HttpServlet {
         }
 
         request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Carro/ListarCarro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Carro/ListarCarro.jsp").forward(request, response);
 
     }
 

@@ -37,7 +37,7 @@ public class CadastroFilialServlet extends HttpServlet {
             }
         }
 
-        request.getRequestDispatcher("Filial/form-filial-cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Filial/form-filial-cadastro.jsp").forward(request, response);
 
     }
 
@@ -81,7 +81,7 @@ public class CadastroFilialServlet extends HttpServlet {
         request.setAttribute("pessoaCadastrada", p1);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Filial/resultadoCadastro.jsp");
+                = request.getRequestDispatcher("WEB-INF/Filial/resultadoCadastro.jsp");
         dispatcher.forward(request, response);
 
     }

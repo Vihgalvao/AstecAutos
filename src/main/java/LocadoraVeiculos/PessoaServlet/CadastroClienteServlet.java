@@ -40,7 +40,7 @@ public class CadastroClienteServlet extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
         
-        request.getRequestDispatcher("Pessoa/form-pessoa-cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/form-pessoa-cadastro.jsp").forward(request, response);
 
     }
 
@@ -109,7 +109,7 @@ public class CadastroClienteServlet extends HttpServlet {
         request.setAttribute("clienteCadastrado", p1);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Pessoa/resultadoCadastro.jsp");
+                = request.getRequestDispatcher("WEB-INF/Pessoa/resultadoCadastro.jsp");
         dispatcher.forward(request, response);
 
     }

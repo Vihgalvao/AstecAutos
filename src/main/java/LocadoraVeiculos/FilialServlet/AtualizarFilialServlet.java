@@ -114,14 +114,14 @@ public class AtualizarFilialServlet extends HttpServlet {
 
                 request.setAttribute("pessoaUpdate", p1);
                 RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("Filial/resultadoAtualizar.jsp");
+                        = request.getRequestDispatcher("WEB-INF/Filial/resultadoAtualizar.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("ENTROU NO ATUALIZAR");
             } else if (metodo.equals("deletar")) {
                 con.excluir(p1.getId());
 
                 request.setAttribute("pessoaUpdate", p1);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Filial/resultadoDelete.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Filial/resultadoDelete.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("ENTROU NO DELETAr");
             }

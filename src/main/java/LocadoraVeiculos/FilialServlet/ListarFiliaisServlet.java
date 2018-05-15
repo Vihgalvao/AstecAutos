@@ -89,7 +89,7 @@ public class ListarFiliaisServlet extends HttpServlet {
         }
 
         request.setAttribute("lista", lista);
-        request.getRequestDispatcher("Filial/ListarFilial.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Filial/ListarFilial.jsp").forward(request, response);
 
     }
 

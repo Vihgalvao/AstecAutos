@@ -49,7 +49,6 @@ public class BuscarClienteServlet extends HttpServlet {
         String idcarro = request.getParameter("idcliente");
 
         int id = Integer.parseInt(idcarro.substring(1, 2));
-        System.out.println("Esse é o id: " + id);
 
         DaoPessoa con = new DaoPessoa();
 
@@ -68,7 +67,7 @@ public class BuscarClienteServlet extends HttpServlet {
 
         request.setAttribute("ClienteAtualizada", pessoa);
 
-        request.getRequestDispatcher("Pessoa/form-pessoa-atualizar.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/form-pessoa-atualizar.jsp").forward(request, response);
 
     }
 

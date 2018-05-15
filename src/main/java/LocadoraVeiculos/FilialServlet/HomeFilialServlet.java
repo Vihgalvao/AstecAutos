@@ -69,7 +69,7 @@ public class HomeFilialServlet extends HttpServlet {
             }
         }
 
-        request.getRequestDispatcher("Filial/FilialInicio.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Filial/FilialInicio.jsp").forward(request, response);
     }
 
     /**

@@ -62,7 +62,7 @@ public class BuscarFuncionarioServlet extends HttpServlet {
 
         request.setAttribute("FuncionarioAtualizada", pessoa);
 
-        request.getRequestDispatcher("Pessoa/form-funcionario-atualizar.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/form-funcionario-atualizar.jsp").forward(request, response);
 
     }
 

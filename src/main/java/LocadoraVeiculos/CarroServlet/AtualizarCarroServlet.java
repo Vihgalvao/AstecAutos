@@ -92,14 +92,14 @@ public class AtualizarCarroServlet extends HttpServlet {
 
                 request.setAttribute("carroUpdate", p1);
                 RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("Carro/resultadoAtualizar.jsp");
+                        = request.getRequestDispatcher("WEB-INF/Carro/resultadoAtualizar.jsp");
                 dispatcher.forward(request, response);
 
             } else if (metodo.equals("deletar")) {
                 con.excluir(p1.getIdcarro());
 
                 request.setAttribute("carroUpdate", p1);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Carro/resultadoDelete.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Carro/resultadoDelete.jsp");
                 dispatcher.forward(request, response);
 
             }

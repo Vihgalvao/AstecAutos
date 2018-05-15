@@ -64,7 +64,7 @@ public class HomePessoaServlet extends HttpServlet {
         if (funcionario == null) {
             response.sendRedirect("index.jsp");
         }
-        request.getRequestDispatcher("Pessoa/PessoaInicio.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pessoa/PessoaInicio.jsp").forward(request, response);
 
     }
 
