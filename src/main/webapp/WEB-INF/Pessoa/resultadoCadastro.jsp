@@ -7,6 +7,7 @@
     <title>JSP Page</title>
   </head>
   <body>
+      <jsp:include page="menu.jsp"/>
     <h1>Pessoa: <c:out value="${clienteCadastrado.nome}" /> cadastrado com sucesso</h1>
     <p>
     <a href= "${pageContext.request.contextPath}/HomePessoaServlet" > Voltar </a>       

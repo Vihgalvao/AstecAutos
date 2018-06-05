@@ -7,6 +7,7 @@
     <title>JSP Page</title>
   </head>
   <body>
+      <jsp:include page="menu.jsp"/>
     <h1>Carro <c:out value="${carroUpdate.carro}" /> atualizada com sucesso</h1>
     <p>
          <a href= "${pageContext.request.contextPath}/HomeCarroServlet" > Voltar </a>   

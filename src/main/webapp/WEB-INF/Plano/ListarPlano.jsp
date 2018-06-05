@@ -13,18 +13,33 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <h1>Planos Disponiveis</h1>
-    <div>
-      <ul>
-	<c:forEach items="${lista}" var="p">
-	  <li>
-	    <h2><a href='http://localhost:8080/agendaweb-1.0-SNAPSHOT/buscar-plano?id_plano="${p.idplano}"'> Nome Plano <c:out value="${p.plano}" /> </a></h2>
-	    <h2> Classificação: <c:out value="${p.classificacao}" /></h2>
-            <h2> Valor: <c:out value="${p.valor}" /></h2>
-	  </li>
-	</c:forEach>
-      </ul> <p>
-        <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>  
-    </div>
+        <jsp:include page="menu.jsp"/>
+        <h1>Planos Disponiveis</h1>
+        <p>
+        <hr class="style13">
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Plano</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <c:forEach items="${lista}" var="p">    
+                        <tr>
+                            <td><a href='${pageContext.request.contextPath}/buscar-plano?id_plano="${p.idplano}"'> <c:out value="${p.plano}" /> </a></td>
+                            <td><c:out value="${p.classificacao}" /></td>
+                            <td> <c:out value="${p.valor}" /></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+
+            <p>
+                <a href= "${pageContext.request.contextPath}/HomeCarroServlet" > Voltar </a> 
+        </div>
     </body>
 </html>

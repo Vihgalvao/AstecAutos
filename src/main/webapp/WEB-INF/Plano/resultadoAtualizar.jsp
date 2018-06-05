@@ -7,6 +7,7 @@
     <title>JSP Page</title>
   </head>
   <body>
+        <jsp:include page="menu.jsp"/>
     <h1>Plano: <c:out value="${planoUpdate.plano}" /> atualizada com sucesso</h1>
     <p>
         <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>     

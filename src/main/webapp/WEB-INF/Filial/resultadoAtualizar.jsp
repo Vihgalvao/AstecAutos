@@ -7,7 +7,8 @@
     <title>JSP Page</title>
   </head>
   <body>
-    <h1>Filial <c:out value="${pessoaUpdate.nomeUnidade}" /> atualizada com sucesso</h1>
+        <jsp:include page="menu.jsp"/>
+    <h1>Filial <c:out value="${filial.nomeUnidade}" /> atualizada com sucesso</h1>
     <p>
         <a href= "${pageContext.request.contextPath}/HomeFilialServlet" > Voltar </a>    
   </body>

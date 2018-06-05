@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+          <jsp:include page="menu.jsp"/>
         <h1>Filias</h1><p>
         <ul>
             <li><h3><a href="${pageContext.request.contextPath}/cadastro-filial"> Cadastro </a></h3></li>

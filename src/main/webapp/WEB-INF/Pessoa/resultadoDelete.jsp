@@ -7,6 +7,7 @@
     <title>Delete</title>
   </head>
   <body>
+      <jsp:include page="menu.jsp"/>
     <h1>Id carro: <c:out value="${ClienteUpdate.id}" /> deletado com sucesso</h1>
     <p>
     <a href= "${pageContext.request.contextPath}/HomePessoaServlet" > Voltar </a>      

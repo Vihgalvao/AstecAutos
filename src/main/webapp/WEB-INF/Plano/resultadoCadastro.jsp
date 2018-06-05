@@ -13,7 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>Plano <c:out value="${planoCadastrado.plano}" /> cadastrado com sucesso</h1>
+          <jsp:include page="menu.jsp"/>
+       <h1>Plano <c:out value="${plano.plano}" /> cadastrado com sucesso</h1>
     <p>
     <a href= "${pageContext.request.contextPath}/HomePlanoServlet" > Voltar </a>   
     </body>
