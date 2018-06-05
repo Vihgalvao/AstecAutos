@@ -186,7 +186,7 @@ public class DaoPessoa {
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(
-                        " SELECT idpessoa,  nome, sobrenome, a.rua, a.numero, a.bairro a.cep, a.idestado, estado, a.cidade, cpf, dtnascimento, email, a.telefone, b.id_nivel, nivel, b.id_cargo, cargo, login, senha, idsexo, sexo, id, NomeUnidade  "
+                        " SELECT idpessoa,  nome, sobrenome, a.rua, a.numero, a.bairro, a.cep, a.idestado, estado, a.cidade, cpf, dtnascimento, email, a.telefone, b.id_nivel, nivel, b.id_cargo, cargo, login, senha, idsexo, sexo, id, NomeUnidade  "
                         + " FROM test.Pessoa a inner join test.PessoaFuncionario b on a.idpessoa = b.id_pessoa "
                         + " inner join test.Nivel c on b.id_nivel = c.id_nivel "
                         + " inner join test.Cargo d on b.id_cargo = d.id_cargo "

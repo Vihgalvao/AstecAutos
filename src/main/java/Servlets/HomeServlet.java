@@ -6,6 +6,7 @@
 package Servlets;
 
 
+import Model.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -59,6 +60,15 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        }
+        
+        
+        
+        
+        
         request.getRequestDispatcher("./WEB-INF/HomePage.jsp").forward(request, response);  
     }
 
