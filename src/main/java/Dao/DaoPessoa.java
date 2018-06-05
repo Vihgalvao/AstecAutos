@@ -263,6 +263,37 @@ public class DaoPessoa {
         return p;
     }
 
+    public Pessoa selectFuncionario(String cpf) throws ClassNotFoundException, SQLException {
+        Pessoa p = new Pessoa();
+
+        try (Connection conn = obterConexao();
+                PreparedStatement stmt = conn.prepareStatement(
+                        " SELECT idpessoa "
+                        + " from Pessoa "
+                        + " WHERE cpf = " + cpf);
+                ResultSet resultados = stmt.executeQuery()) {
+
+            while (resultados.next()) {
+
+                int idpessoa = resultados.getInt("idpessoa");
+
+                p.setId(idpessoa);
+
+            }
+
+            System.out.println("Nome é:" + p.getIdsexo());
+            System.out.println("Sobrenome é: " + p.getIdestado());
+            conn.close();
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            System.out.println("DEU MERDAAA ");
+        } catch (ClassNotFoundException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return p;
+    }
+
     public Pessoa selectId(String cpf) throws ClassNotFoundException, SQLException {
 
         Pessoa Pessoa = new Pessoa();
@@ -293,7 +324,7 @@ public class DaoPessoa {
                 Date dtnascimento = resultados.getDate("dtnascimento");
                 int cnh = resultados.getInt("cnh");
                 double renda = resultados.getInt("renda");
-                
+
                 Pessoa.setId(idP);
                 Pessoa.setNome(nome);
                 Pessoa.setSobrenome(sobrenome);
@@ -456,7 +487,7 @@ public class DaoPessoa {
         }
         return lista;
     }
-    
+
     public List<Pessoa> listarFuncionario(int id) throws ClassNotFoundException, SQLException {
 
         List<Pessoa> lista = new ArrayList<Pessoa>();
@@ -531,7 +562,6 @@ public class DaoPessoa {
         }
         return lista;
     }
-
 
     public void atualizar(Pessoa P) throws ClassNotFoundException, SQLException {
         try {

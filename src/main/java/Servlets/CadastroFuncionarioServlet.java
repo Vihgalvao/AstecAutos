@@ -128,7 +128,8 @@ public class CadastroFuncionarioServlet extends HttpServlet {
             conn.incluir(p1);
 
             Pessoa pes = new Pessoa();
-            pes = conn.selectId(p1.getCpf());
+            pes = conn.selectFuncionario(p1.getCpf());
+            System.out.println("ESSE É O IDDDD PORRAAAAA !!!" + pes.getId());
             p1.setId(pes.getId());
             conn.incluirFuncionario(p1); 
 
