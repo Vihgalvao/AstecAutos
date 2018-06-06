@@ -9,6 +9,7 @@ import Dao.DaoPedido;
 import Dao.DaoPlano;
 
 import Model.Pedido;
+import Model.Pessoa;
 import Model.Plano;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,11 @@ public class CadastroPedidoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+                Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        }
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -112,7 +118,7 @@ public class CadastroPedidoServlet extends HttpServlet {
         
         request.setAttribute("pedido", pedido);
 
-        request.getRequestDispatcher("WEB-INF/Pedido/ResultadoCadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pedido/resultadoCadastro.jsp").forward(request, response);
 
     }
 

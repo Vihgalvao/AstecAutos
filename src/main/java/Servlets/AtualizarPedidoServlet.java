@@ -152,7 +152,7 @@ public class AtualizarPedidoServlet extends HttpServlet {
         
         request.setAttribute("pedido", pedido);
 
-        request.getRequestDispatcher("WEB-INF/Pedido/ResultadoAtualizar.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Pedido/resultadoAtualizar.jsp").forward(request, response);
 
     }
 

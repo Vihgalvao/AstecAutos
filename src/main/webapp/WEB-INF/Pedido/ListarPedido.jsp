@@ -59,7 +59,7 @@
                 <tbody>
                     <c:forEach items="${lista}" var="p">    
                         <tr>
-                            <td><a href='http://localhost:8080/agendaweb-1.0-SNAPSHOT/buscar-pedido?idpedido="${p.id}"'> <c:out value="${p.nomeCliente}" /> </a></td>
+                            <td><a href='${pageContext.request.contextPath}/buscar-pedido?idpedido="${p.id}"'> <c:out value="${p.nomeCliente}" /> </a></td>
                             <td><c:out value="${p.cpf}" /></td>
                             <td><c:out value="${p.filial}" /></td>
                             <td><c:out value="${p.plano}" /></td>
