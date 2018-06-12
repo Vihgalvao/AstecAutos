@@ -125,12 +125,11 @@ public class IniciarPedidoServlet extends HttpServlet {
         request.setAttribute("plano", plano);
         request.setAttribute("filial", filial);
         
-        request.setAttribute("funcionario", funcionario);
+        
         request.setAttribute("cliente", cliente);
 
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("WEB-INF/Pedido/form-cadastro-pedido.jsp");
-        dispatcher.forward(request, response);
+        
+        request.getRequestDispatcher("WEB-INF/Pedido/form-cadastro-pedido.jsp").forward(request, response);
     }
 
     /**
