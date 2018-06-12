@@ -62,7 +62,7 @@
                     <label for="inputAddress">Funcionario</label>
                     <select name="funcionario2" class="form-control" id="funcionario">
                         <option value="0">Selecione</option>
-                        <c:forEach items="${funcionario}" var="p">
+                        <c:forEach items="${funcionario2}" var="p">
                             <option value="${p.id}"> <c:out value="${p.nome}"/> </option>
                         </c:forEach>
                     </select>

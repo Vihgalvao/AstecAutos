@@ -49,16 +49,6 @@
             </div>
 
             <div class="form-group col-md-8" >
-
-                <div class="form-row col-md-8">
-                    <label for="inputAddress">Funcionario</label>
-                    <select name="funcionario" class="form-control" id="funcionario">
-                        <option value="0">Selecione</option>
-                        <c:forEach items="${funcionario}" var="p">
-                            <option value="${p.id}"> <c:out value="${p.nome}"/> <c:out value="${p.sobrenome}"/></option>
-                        </c:forEach>
-                    </select>
-                </div> 
             </div>
             <div class="form-group col-md-8" >
                 <div class="form-row col-md-4">

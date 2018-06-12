@@ -89,7 +89,7 @@ public class IniciarPedidoServlet extends HttpServlet {
         
         String cpf = request.getParameter("cpf");
         String id_classificao = request.getParameter("class");
-        String idfilial = request.getParameter("filial");
+        
 
         
         int id = Integer.parseInt(id_classificao);
@@ -112,7 +112,7 @@ public class IniciarPedidoServlet extends HttpServlet {
             filial = conFilial.listar();
             carro  = conCarro.listarCarros(id);
             plano  = conPlano.listarPlano(id);
-            funcionario = conPessoa.listarFuncionario(Integer.parseInt(idfilial));
+            
             cliente = conPessoa.selectId(cpf);
             
         } catch (ClassNotFoundException ex) {
@@ -124,7 +124,7 @@ public class IniciarPedidoServlet extends HttpServlet {
         request.setAttribute("carro", carro);
         request.setAttribute("plano", plano);
         request.setAttribute("filial", filial);
-        request.setAttribute("idfilial", idfilial);
+        
         request.setAttribute("funcionario", funcionario);
         request.setAttribute("cliente", cliente);
 

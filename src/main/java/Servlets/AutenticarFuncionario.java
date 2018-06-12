@@ -28,12 +28,15 @@ public class AutenticarFuncionario extends HttpServlet {
             throws ServletException, IOException {
 
         request.removeAttribute("msg");
+        System.out.println("CHEGOU AQUII !");
         
         try {
 
             String cpf = request.getParameter("login");
             String senha = request.getParameter("senha");
             
+            System.out.println(cpf);
+            System.out.println(senha);
    
             Pessoa funcionario = DaoPessoa.logar(cpf, senha);
             int id = funcionario.getId();
@@ -41,6 +44,7 @@ public class AutenticarFuncionario extends HttpServlet {
             if (id > 0) {
 
                 request.getSession().setAttribute("funcionario", funcionario);
+                
                 request.getRequestDispatcher("WEB-INF/HomePage.jsp").forward(request, response);
 
             } else {

@@ -42,15 +42,6 @@
                         <option value="6">Vans</option>
                     </select>
                 </div>
-                <div class="form-row col-md-4">
-                    <label for="inputAddress">Filial</label>
-                    <select name="filial" class="form-control" id="filial">
-                        <option value="0">Selecione</option>
-                        <c:forEach items="${filial}" var="p">
-                            <option value="${p.id}"> <c:out value="${p.nomeUnidade}"/> </option>
-                        </c:forEach>
-                    </select>
-                </div> 
             </div>
             <div class="form-group row right">
                 <div class="col-sm-8">

@@ -123,7 +123,7 @@ public class BuscarPedidoServlet extends HttpServlet {
         request.setAttribute("carro", carro);
         request.setAttribute("plano", plano);
         request.setAttribute("filial", filial);
-        request.setAttribute("funcionario", funcionario2);
+        request.setAttribute("funcionario2", funcionario2);
         request.setAttribute("cliente", cliente);
         request.setAttribute("pedido", pedido);
         

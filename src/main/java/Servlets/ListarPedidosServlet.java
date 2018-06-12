@@ -13,6 +13,8 @@ import Model.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -47,7 +49,7 @@ public class ListarPedidosServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListarPedidosServlet</title>");            
+            out.println("<title>Servlet ListarPedidosServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListarPedidosServlet at " + request.getContextPath() + "</h1>");
@@ -68,27 +70,14 @@ public class ListarPedidosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+
+        Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
         if (funcionario == null) {
             response.sendRedirect("index.jsp");
         }
 
-        DaoPedido con = new DaoPedido();
-        List<Pedido> lista = new ArrayList<Pedido>();
-
-        try {
-
-            lista = con.listar();
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarCarrosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarCarrosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        request.setAttribute("lista", lista);
         request.getRequestDispatcher("WEB-INF/Pedido/ListarPedido.jsp").forward(request, response);
+
     }
 
     /**
@@ -102,7 +91,40 @@ public class ListarPedidosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Pessoa funcionario = (Pessoa) request.getSession().getAttribute("funcionario");
+        if (funcionario == null) {
+            response.sendRedirect("index.jsp");
+        }
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        DaoPedido con = new DaoPedido();
+        List<Pedido> lista = new ArrayList<Pedido>();
+
+        String dtini = request.getParameter("dtini");
+        String dtfim = request.getParameter("dtfim");
+        String status = request.getParameter("status");
+
+        java.sql.Date data1 = null;
+        java.sql.Date data2 = null;
+        try {
+            data1 = new java.sql.Date(format.parse(dtini).getTime());
+            data2 = new java.sql.Date(format.parse(dtfim).getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+
+            lista = con.listar(Integer.parseInt(status), data1, data2);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListarCarrosServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarCarrosServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        request.setAttribute("lista", lista);
+        request.getRequestDispatcher("WEB-INF/Pedido/ListarPedido.jsp").forward(request, response);
     }
 
     /**

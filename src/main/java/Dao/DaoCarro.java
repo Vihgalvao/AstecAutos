@@ -25,7 +25,7 @@ public class DaoCarro {
         Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/test", "root", "");
+                "jdbc:mysql://172.20.0.81:3306/test", "planejamento", "ccash01");
         return conn;
     }
     

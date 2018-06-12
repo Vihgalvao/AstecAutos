@@ -25,7 +25,7 @@ public class DaoPessoa {
         Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/test", "root", "");
+                "jdbc:mysql://172.20.0.81:3306/test", "planejamento", "ccash01");
         return conn;
     }
 
@@ -697,6 +697,7 @@ public class DaoPessoa {
                 String cargo = resultados.getString("cargo");
                 String login2 = resultados.getString("login");
                 String senha2 = resultados.getString("senha");
+                int idfilial = resultados.getInt("id");
 
                 p.setId(idpessoa);
                 p.setNome(nome);
@@ -716,6 +717,7 @@ public class DaoPessoa {
                 p.setIdcargo(idcargo);
                 p.setLogin(login2);
                 p.setSenha(senha2);
+                p.setIdfilial(idfilial);
 
             }
             conn.close();

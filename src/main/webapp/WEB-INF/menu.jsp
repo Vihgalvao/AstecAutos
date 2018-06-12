@@ -79,10 +79,11 @@
                         </ul>
                     </li>
                 </ul>
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="${pageContext.request.contextPath}/Sair"><span class="glyphicon glyphicon-log-out"></span> Sair </a></li>
                 </ul>
-                
+                <p class="navbar-text navbar-right">Olá! (${funcionario.login}) </p>
             </div>
         </nav>                 
     </body>

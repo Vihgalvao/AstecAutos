@@ -32,21 +32,19 @@ public class DaoPedido {
         Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/test", "root", "");
+                "jdbc:mysql://172.20.0.81:3306/test", "planejamento", "ccash01");
         return conn;
     }
 
     public Pedido relatorio(int idstatus) throws ClassNotFoundException, SQLException, IOException {
         DateFormat df = new SimpleDateFormat("dd-mm-yyyy HHmmss");
         Calendar cal = Calendar.getInstance();
-        
+
         Pedido p = new Pedido();
-        File fArqEx = new File("C:\\tads\\", "AnaliticoPedidos" + df.format(cal.getTime()) +".txt");
+        File fArqEx = new File("C:\\tads\\", "AnaliticoPedidos" + df.format(cal.getTime()) + ".txt");
         if (fArqEx.exists()) {
             fArqEx.delete();
         }
-        
-        
 
         FileWriter fwArq = new FileWriter(fArqEx);
 
@@ -72,8 +70,6 @@ public class DaoPedido {
             fwArq.write("CARRO");
             fwArq.write("\r\n");
 
-            
-
             while (resultados.next()) {
 
                 fwArq.write(resultados.getString("nome") + ";");
@@ -93,7 +89,6 @@ public class DaoPedido {
             }
             conn.close();
             fwArq.close();
-            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -103,7 +98,7 @@ public class DaoPedido {
         return p;
     }
 
-    public List<Pedido> listar() throws ClassNotFoundException, SQLException {
+    public List<Pedido> listar(int status, Date dtini, Date dtfim) throws ClassNotFoundException, SQLException {
 
         List<Pedido> lista = new ArrayList<Pedido>();
 
@@ -115,7 +110,9 @@ public class DaoPedido {
                         + " inner join Pessoa b	on a.id_cliente = b.idpessoa "
                         + " inner join Filial c	on a.id_filial = c.Id "
                         + " inner join Plano d	on a.id_plano = d.id_plano "
-                        + " inner join Carro e	on a.id_carro = e.id_carro ");
+                        + " inner join Carro e	on a.id_carro = e.id_carro "
+                        + " where dtpedido between '" + dtini + "' and '" + dtfim + "' "
+                        + " and  ped_status = " + status);
                 ResultSet resultados = stmt.executeQuery()) {
 
             System.out.println("retornou consulta");

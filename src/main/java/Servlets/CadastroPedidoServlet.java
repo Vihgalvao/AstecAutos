@@ -90,8 +90,8 @@ public class CadastroPedidoServlet extends HttpServlet {
         pedido.setIdpessoa(Integer.parseInt(idcliente));
         pedido.setIdplano(Integer.parseInt(idplano));
         pedido.setIdcarro(Integer.parseInt(idcarro));
-        pedido.setIdfuncionario(Integer.parseInt(idfun));
-        pedido.setIdfilial(Integer.parseInt(idfilial));
+        pedido.setIdfuncionario(funcionario.getId());
+        pedido.setIdfilial(funcionario.getIdfilial());
         pedido.setDtlocacao((java.sql.Date) dataRetirada2);
         pedido.setDtdevolucao((java.sql.Date) dataEntrega2);
 
